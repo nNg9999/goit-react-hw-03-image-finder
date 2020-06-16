@@ -1,0 +1,23 @@
+%social-icons {
+  display: block;
+  width: 28px;
+  height: 28px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+%buttom-section {
+  display: block;
+  outline: none;
+  border-width: 3px;
+  border-color: $main-color;
+  border-style: solid;
+  
+}
+
+%buttom-footer {
+  border: none;
+  background-color: $bg-footer-color;
+  color: $main-color;
+  outline: 0;
+}

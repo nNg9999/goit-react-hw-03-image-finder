@@ -1,0 +1,51 @@
+{
+  "name": "goit-react",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://nng9999.github.io/goit-react-hw-03-image-finder",
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.19.2",
+    "classnames": "^2.2.6",
+    "gh-pages": "^2.2.0",
+    "lorem-ipsum": "^2.0.3",
+    "node-sass": "^4.14.1",
+    "react": "^16.13.1",
+    "react-devtools": "^4.6.0",
+    "react-dom": "^16.13.1",
+    "react-inspector": "^5.0.1",
+    "react-loader-spinner": "^3.1.14",
+    "react-scripts": "3.4.1",
+    "react-toastify": "^6.0.5",
+    "uuid": "^8.1.0",
+    "uuid4": "^1.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "prop-types": "^15.7.2"
+  }
+}

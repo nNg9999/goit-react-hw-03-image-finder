@@ -1,0 +1,81 @@
+@mixin font($font, $fontSize, $fontWeight, $lh) {
+  font-family: $font;
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+  line-height: $lh;
+}
+
+@mixin center-flex ($type:'all') {
+  display: flex;
+
+  @if $type=='all' {
+    justify-content: center;
+    align-items: center;
+  }
+
+  @else if $type=='hor' {
+    justify-content: center;
+  }
+
+  @else if $type=='ver' {
+    align-items: center;
+  }
+}
+
+@mixin space-between-flex ($type:'all') {
+  display: flex;
+  justify-content: space-between;
+
+  @if $type=='all' {
+    align-items: center;
+  }
+
+  @else if $type=='flex-start' {
+    align-items: flex-start;
+  }
+
+  @else if $type=='flex-end' {
+    align-items: flex-end;
+  }
+}
+
+@mixin pseudo($display: block, $content:'') {
+  display: $display;
+  content: $content;
+}
+
+@mixin gradient-bg-image($path:'', $bg-size: cover, $repeat: no-repeat, $pos: center center) {
+  background-image: $linear-gradient, url($path);
+  background-size: $bg-size;
+  background-repeat: $repeat;
+  background-position: $pos;
+}
+
+@mixin flex($display: flex, $flexWrap: wrap, $justifyContent: space-between, $alignItems: center) {
+  display: $display;
+  flex-wrap: $flexWrap;
+  justify-content: $justifyContent;
+  align-items: $alignItems;
+}
+
+
+
+
+
+// %icon{
+//   display: inline-block;
+//   width: 4em;
+//   height: 4em;
+// }
+
+// $icons: facebook, linkedin, twitter ; 
+
+// @mixin generate-icons ($baseclass, $list, $path, $ext) {
+//   @each $icon in $list {
+//     .#($baseclass)#($icon){@extend %icon; background-image: url(#($path)#($icon).#($ext));
+
+//     }
+
+//   }
+// }
+// @include generate-icons('icon-',$icons ,'../url/image/social-icons/','png' )
