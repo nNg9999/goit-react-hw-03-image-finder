@@ -21,33 +21,29 @@ import 'react-toastify/dist/ReactToastify.css';
 
 class App extends Component {
 
-  static propTypes = {};
-  static defaulProps = {};
-
   state = {
     hits: [],
     totalHits: 0,
     loading: false,
     error: null,
     searchQuery: '',
-    page: 0,
+    page: 1,
     largeImageUrl: null,
     showModal: false,
   };
 
   componentDidUpdate(prevProps, prevState) {
-    const prevQuery = prevState.searchQuery;
-    const nextQuery = this.state.searchQuery;
+    // const prevQuery = prevState.searchQuery;
+    // const nextQuery = this.state.searchQuery;
 
-    if (prevQuery !== nextQuery) {
-      this.fetchArticles();
-    }
+    // if (prevQuery !== nextQuery) {
+    //   this.fetchArticles();
+    // }
 
     window.scrollTo({
       top: document.documentElement.scrollHeight,
       behavior: 'smooth',
     })
-
   }
 
   fetchArticles = () => {
@@ -58,15 +54,7 @@ class App extends Component {
     apiService
       .fetchArticlesWithQuery(searchQuery, page)
       .then(data => {
-        toast.success('News dounload', {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        toast.success('images loading');
         return data
       })
       .then(data =>
@@ -75,33 +63,29 @@ class App extends Component {
           page: prevState.page + 1,
           largeImageUrl: data.hits.map(({ largeImageURL }) => ({ largeImageURL }))
         })))
-
-      // .then(() => window.scrollTo({
-      //   top: document.documentElement.scrollHeight,
-      //   behavior: 'smooth',
-      // }))
+      .then(() => window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: 'smooth',
+      }))
       .catch(error => {
         this.setState({ error: error.message });
-        toast.error(error.message, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-      }
-      )
+        toast.error(error.message);
+      })
       .finally(() => this.setState({ loading: false }));
   };
 
   handleSearchFormSubmit = query => {
+    if (!query) {
+      return;
+    }
+
     this.setState({
       searchQuery: query,
-      page: 1,
       hits: [],
+      page: 1,
     });
+
+    this.fetchArticles();
   };
 
 
@@ -141,7 +125,7 @@ class App extends Component {
         {showModal && <Modal largeImageUrl={largeImageUrl} onClick={this.toggleModal} />}
         <ToastContainer
           position="top-right"
-          autoClose={5000}
+          autoClose={2000}
           hideProgressBar={false}
           newestOnTop={false}
           closeOnClick

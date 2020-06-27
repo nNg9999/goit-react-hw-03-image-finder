@@ -10,7 +10,7 @@ const fetchArticlesWithQuery = (searchQuery, page) => {
     .get(baseUrl + requestParams)
     .then(response => ({
       hits: response.data.hits,
-      totalHits: response.data.totalHits
+      totalHits: response.data.totalHits,
     }))
 };
 
