@@ -40,6 +40,8 @@ class App extends Component {
     //   this.fetchArticles();
     // }
 
+    // this.fetchArticles();
+
     window.scrollTo({
       top: document.documentElement.scrollHeight,
       behavior: 'smooth',
@@ -50,6 +52,7 @@ class App extends Component {
     const { searchQuery, page } = this.state;
 
     this.setState({ loading: true });
+
 
     apiService
       .fetchArticlesWithQuery(searchQuery, page)
@@ -63,29 +66,28 @@ class App extends Component {
           page: prevState.page + 1,
           largeImageUrl: data.hits.map(({ largeImageURL }) => ({ largeImageURL }))
         })))
-      .then(() => window.scrollTo({
-        top: document.documentElement.scrollHeight,
-        behavior: 'smooth',
-      }))
       .catch(error => {
         this.setState({ error: error.message });
         toast.error(error.message);
       })
-      .finally(() => this.setState({ loading: false }));
+      .finally(() => this.setState({ loading: false }))
   };
 
   handleSearchFormSubmit = query => {
+
     if (!query) {
-      return;
+      return
     }
 
     this.setState({
       searchQuery: query,
-      hits: [],
       page: 1,
+      hits: [],
     });
 
-    this.fetchArticles();
+    setTimeout(() => {
+      this.fetchArticles(query)
+    }, 10);
   };
 
 

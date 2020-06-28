@@ -17,6 +17,12 @@ export default class Modal extends Component {
     window.removeEventListener('keydown', this.handleKeyDown);
   }
 
+  handelClick = e => {
+    if (e.target === e.currentTarget) {
+      this.props.onClick();
+    }
+  }
+
   handleKeyDown = e => {
 
     if (e.code === 'Escape') {
@@ -28,7 +34,7 @@ export default class Modal extends Component {
     const { largeImageUrl, onClick } = this.props;
 
     return (
-      <div className="Overlay">
+      <div className="Overlay" onClick={this.handelClick}>
         <div className="Modal">
           <img src={largeImageUrl} alt="" width="1280" height="853" />
         </div>

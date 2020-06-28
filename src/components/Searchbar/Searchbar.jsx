@@ -10,8 +10,8 @@ export default class Searchbar extends Component {
 
   state = { inputValue: '' };
 
-  handleChange = e => {
-    this.setState({ inputValue: e.target.value });
+  handleChange = ({ target }) => {
+    this.setState({ inputValue: target.value });
   };
 
   handleSubmit = e => {
