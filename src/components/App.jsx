@@ -86,7 +86,7 @@ class App extends Component {
     });
 
     setTimeout(() => {
-      this.fetchArticles(query)
+      this.fetchArticles();
     }, 10);
   };
 
